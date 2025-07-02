@@ -1,103 +1,120 @@
-import Image from "next/image";
+import Hero from "@/components/Hero";
+import Section from "@/components/Section";
+import ProjectCard from "@/components/ProjectCard";
+import { Code, Mail, Github, Linkedin } from "lucide-react";
 
-export default function Home() {
+export default function HomePage() {
+  const projects = [
+    {
+      title: "E-Commerce Platform",
+      description: "Full-featured online store with payment integration",
+      tags: ["Next.js", "Stripe", "Tailwind CSS"],
+    },
+    {
+      title: "Task Management App",
+      description: "Collaborative task board with real-time updates",
+      tags: ["React", "Firebase", "Material UI"],
+    },
+    {
+      title: "Weather Dashboard",
+      description: "Real-time weather forecasting application",
+      tags: ["TypeScript", "Chart.js", "Geolocation API"],
+    },
+  ];
+
   return (
-    <div className="grid min-h-screen grid-rows-[20px_1fr_20px] items-center justify-items-center gap-16 p-8 pb-20 font-[family-name:var(--font-geist-sans)] sm:p-20">
-      <main className="row-start-2 flex flex-col items-center gap-[32px] sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-center font-[family-name:var(--font-geist-mono)] text-sm/6 sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="rounded bg-black/[.05] px-1 py-0.5 font-[family-name:var(--font-geist-mono)] font-semibold dark:bg-white/[.06]">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <>
+      <Hero />
 
-        <div className="flex flex-col items-center gap-4 sm:flex-row">
-          <a
-            className="bg-foreground text-background flex h-10 items-center justify-center gap-2 rounded-full border border-solid border-transparent px-4 text-sm font-medium transition-colors hover:bg-[#383838] sm:h-12 sm:w-auto sm:px-5 sm:text-base dark:hover:bg-[#ccc]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="flex h-10 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-4 text-sm font-medium transition-colors hover:border-transparent hover:bg-[#f2f2f2] sm:h-12 sm:w-auto sm:px-5 sm:text-base md:w-[158px] dark:border-white/[.145] dark:hover:bg-[#1a1a1a]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      <Section id="projects" title="Featured Projects">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {projects.map((project, index) => (
+            <ProjectCard key={index} {...project} delay={index * 0.1} />
+          ))}
         </div>
-      </main>
-      <footer className="row-start-3 flex flex-wrap items-center justify-center gap-[24px]">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </Section>
+
+      <Section id="about" title="About Me">
+        <div className="mx-auto max-w-3xl">
+          <div className="flex flex-col items-center gap-8 md:flex-row">
+            <div className="h-64 w-64 rounded-xl border-2 border-dashed bg-gray-200" />
+
+            <div className="flex-1">
+              <h3 className="mb-4 text-xl font-bold">
+                Frontend Developer & UI Designer
+              </h3>
+              <p className="mb-4 dark:text-gray-300" style={{ color: "#fff" }}>
+                I create performant, accessible web applications with modern
+                technologies. With 5+ years of experience, I specialize in React
+                ecosystems and design systems.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {[
+                  "React",
+                  "TypeScript",
+                  "Next.js",
+                  "Tailwind CSS",
+                  "Figma",
+                  "Node.js",
+                ].map((skill) => (
+                  <span
+                    key={skill}
+                    className="rounded-full bg-cyan-100 px-3 py-1 text-sm text-cyan-800 dark:bg-cyan-900/50 dark:text-cyan-200"
+                  >
+                    {skill}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </Section>
+
+      <Section id="contact" title="Get In Touch">
+        <div className="mx-auto max-w-md text-center">
+          <p className="mb-8 text-gray-600 dark:text-gray-300">
+            Have a project in mind or want to discuss opportunities?
+          </p>
+
+          <div className="mb-8 flex justify-center gap-6">
+            <a
+              href="mailto:you@example.com"
+              className="rounded-full bg-gray-100 p-3 text-gray-200 transition-all hover:bg-cyan-500 hover:text-white dark:bg-gray-800"
+            >
+              <Mail size={24} />
+            </a>
+            <a
+              href="https://github.com"
+              target="_blank"
+              className="rounded-full bg-gray-100 p-3 text-gray-200 transition-all hover:bg-gray-800 hover:text-white dark:bg-gray-800"
+            >
+              <Github size={24} />
+            </a>
+            <a
+              href="https://linkedin.com"
+              target="_blank"
+              className="rounded-full bg-gray-100 p-3 text-gray-200 transition-all hover:bg-blue-600 hover:text-white dark:bg-gray-800"
+            >
+              <Linkedin size={24} />
+            </a>
+          </div>
+
+          <div className="rounded-xl border border-gray-200 bg-white p-6 dark:border-gray-700 dark:bg-gray-800">
+            <div className="mb-4 flex items-center justify-center gap-3">
+              <Code className="text-cyan-500" />
+              <span className="font-mono text-sm text-gray-200">
+                Currently open to new opportunities
+              </span>
+            </div>
+            <a
+              href="mailto:you@example.com"
+              className="inline-block rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 px-6 py-3 font-medium text-white transition-opacity hover:opacity-90"
+            >
+              Send Message
+            </a>
+          </div>
+        </div>
+      </Section>
+    </>
   );
 }
